@@ -1,6 +1,7 @@
 {
-  "domain": "voice_assistant_commands",
-  "name": "Custom Voice Assistant Commands",
+  "domain": "assist_utils",
+  "name": "Assist Utils",
+  "after_dependencies": ["assist_satellite"],
   "codeowners": ["@deantonious"],
   "config_flow": true,
   "dependencies": ["conversation"],
@@ -10,5 +11,5 @@
   "issue_tracker": "https://github.com/deantonious/CustomVoiceAssistantCommands/issues",
   "requirements": [],
   "single_config_entry": true,
-  "version": "0.1.0"
+  "version": "0.2.0"
 }

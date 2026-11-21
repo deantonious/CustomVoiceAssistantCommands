@@ -1,0 +1,11 @@
+{
+  "entity": {
+    "button": {
+      "reset_all": { "default": "mdi:chat-remove" },
+      "reset_satellite": { "default": "mdi:chat-remove-outline" }
+    }
+  },
+  "services": {
+    "reset_conversation": { "service": "mdi:chat-remove" }
+  }
+}

@@ -1,0 +1,21 @@
+# Default English sentences.
+#
+# Syntax: [word] = optional, (a|b) = alternatives. Matching ignores case and
+# punctuation.
+language: en
+commands:
+  reset:
+    response: "Conversation reset."
+    sentences:
+      - "(forget|reset|clear) [the|this] conversation"
+      - "[start a] new conversation"
+      - "start over"
+  cancel:
+    response: ""
+    sentences:
+      - "(stop|cancel) [that]"
+      - "(never mind|nevermind)"
+      - "nothing"
+      - "(false alarm|wrong wake word)"
+      - "not talking to you"
+      - "(be quiet|shut up)"

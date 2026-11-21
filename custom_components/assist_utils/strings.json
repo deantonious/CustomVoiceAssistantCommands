@@ -1,0 +1,124 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Assist Utils",
+        "description": "Utilities for voice assistants. Voice commands are handled before any conversation agent, including LLM agents, so they cost no LLM call.\n\nChoose the languages whose default phrases should be loaded. You can edit the phrases afterwards in the integration options.",
+        "data": {
+          "languages": "Languages",
+          "features": "Features"
+        },
+        "data_description": {
+          "features": "Turn off anything you don't want; you can change this later."
+        }
+      }
+    },
+    "error": {
+      "no_language": "Select at least one language."
+    },
+    "abort": {
+      "single_instance_allowed": "Assist Utils is already set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Assist Utils options",
+        "menu_options": {
+          "features": "Features",
+          "languages": "Languages",
+          "reset": "Reset conversation phrases",
+          "cancel": "Silent cancel phrases"
+        }
+      },
+      "features": {
+        "title": "Features",
+        "description": "Choose which features are active. Turned-off voice commands stop listening for their phrases, and turned-off buttons are removed.",
+        "data": {
+          "features": "Features"
+        }
+      },
+      "languages": {
+        "title": "Languages",
+        "data": {
+          "languages": "Languages"
+        },
+        "data_description": {
+          "languages": "Default phrases are loaded for these languages. Phrases you customized are kept."
+        }
+      },
+      "reset": {
+        "title": "Reset conversation",
+        "description": "Clears the current conversation's history, so the next request starts a new conversation. Useful when an LLM keeps repeating an earlier mistake.\n\nOne phrase per line, without punctuation. [word] is optional, (a|b) means either. Matching ignores case but not accents, so list both spellings if your speech-to-text is inconsistent. Clear the field to go back to the defaults.",
+        "data": {
+          "sentences": "Phrases",
+          "response": "Spoken response"
+        },
+        "data_description": {
+          "response": "Leave empty to reset silently."
+        }
+      },
+      "cancel": {
+        "title": "Silent cancel",
+        "description": "Ends the request without a response and without calling the conversation agent. Use it when the wake word triggers by mistake.\n\nOne phrase per line, without punctuation. [word] is optional, (a|b) means either. These phrases take priority over built-in commands, so a bare \"stop\" no longer pauses media. Clear the field to go back to the defaults.",
+        "data": {
+          "sentences": "Phrases",
+          "response": "Spoken response",
+          "also_reset": "Also reset the conversation"
+        },
+        "data_description": {
+          "response": "Leave empty to stay silent.",
+          "also_reset": "Clear the conversation history as well, so the false wake doesn't stay in the LLM's context."
+        }
+      }
+    },
+    "error": {
+      "invalid_sentence": "Invalid phrase: {sentence}",
+      "no_language": "Select at least one language."
+    }
+  },
+  "selector": {
+    "languages": {
+      "options": {
+        "en": "English",
+        "es": "Spanish"
+      }
+    },
+    "features": {
+      "options": {
+        "reset": "Reset conversation (voice command)",
+        "cancel": "Silent cancel (voice command)",
+        "satellite_buttons": "Reset conversation button on each satellite",
+        "reset_all_button": "Reset all conversations button"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "reset_all": {
+        "name": "Reset all conversations"
+      },
+      "reset_satellite": {
+        "name": "Reset conversation"
+      }
+    }
+  },
+  "services": {
+    "reset_conversation": {
+      "name": "Reset conversation",
+      "description": "Clears Assist conversation history so the next request starts a new conversation. Target satellites to reset their conversation, give a conversation ID, or leave both empty to reset all conversations.",
+      "fields": {
+        "conversation_id": {
+          "name": "Conversation ID",
+          "description": "Reset this conversation, for example the trigger.user_input.conversation_id of a sentence-triggered automation."
+        }
+      }
+    }
+  },
+  "issues": {
+    "incompatible_ha": {
+      "title": "Assist Utils is not fully compatible with this Home Assistant version",
+      "description": "Assist Utils uses Home Assistant internals that changed in version {ha_version}:\n\n{missing}\n\nThe affected features are turned off (satellite buttons fall back to resetting all conversations). Update Assist Utils, or report this on GitHub."
+    }
+  }
+}

@@ -1,5 +1,12 @@
 pytest-homeassistant-custom-component
-# Requirements of the conversation component for the bundled Home Assistant version
+pillow
+# Requirements of the Home Assistant components the tests load, for the
+# Home Assistant version bundled with the harness (regenerate with
+# scripts/test_requirements.py when it changes).
+gazetteer-matcher==1.1.0
+ha-ffmpeg==3.2.2
 hassil==3.12.1
 home-assistant-intents==2026.10.6
-gazetteer-matcher==1.1.0
+mutagen==1.48.1
+pymicro-vad==1.0.1
+pyspeex-noise==1.0.2

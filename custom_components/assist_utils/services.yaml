@@ -1,4 +1,7 @@
 reset_conversation:
+  target:
+    entity:
+      domain: assist_satellite
   fields:
     conversation_id:
       required: false

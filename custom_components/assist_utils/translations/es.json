@@ -1,0 +1,124 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Assist Utils",
+        "description": "Utilidades para asistentes de voz. Los comandos de voz se procesan antes que cualquier agente de conversación, incluidos los agentes LLM, así que no gastan ninguna llamada al LLM.\n\nElige los idiomas cuyas frases predeterminadas quieres cargar. Después puedes editarlas en las opciones de la integración.",
+        "data": {
+          "languages": "Idiomas",
+          "features": "Funciones"
+        },
+        "data_description": {
+          "features": "Desactiva lo que no quieras; puedes cambiarlo después."
+        }
+      }
+    },
+    "error": {
+      "no_language": "Selecciona al menos un idioma."
+    },
+    "abort": {
+      "single_instance_allowed": "Assist Utils ya está configurado."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones de Assist Utils",
+        "menu_options": {
+          "features": "Funciones",
+          "languages": "Idiomas",
+          "reset": "Frases para reiniciar la conversación",
+          "cancel": "Frases para cancelar en silencio"
+        }
+      },
+      "features": {
+        "title": "Funciones",
+        "description": "Elige qué funciones están activas. Los comandos de voz desactivados dejan de escuchar sus frases y los botones desactivados se eliminan.",
+        "data": {
+          "features": "Funciones"
+        }
+      },
+      "languages": {
+        "title": "Idiomas",
+        "data": {
+          "languages": "Idiomas"
+        },
+        "data_description": {
+          "languages": "Se cargan las frases predeterminadas de estos idiomas. Las frases que hayas personalizado se conservan."
+        }
+      },
+      "reset": {
+        "title": "Reiniciar conversación",
+        "description": "Borra el historial de la conversación actual, para que la siguiente petición empiece una conversación nueva. Útil cuando un LLM repite un error anterior.\n\nUna frase por línea, sin signos de puntuación. [palabra] es opcional y (a|b) significa una u otra. Se ignoran las mayúsculas pero no las tildes, así que pon las dos formas si tu reconocimiento de voz no es consistente. Vacía el campo para volver a las frases predeterminadas.",
+        "data": {
+          "sentences": "Frases",
+          "response": "Respuesta hablada"
+        },
+        "data_description": {
+          "response": "Déjalo vacío para reiniciar sin decir nada."
+        }
+      },
+      "cancel": {
+        "title": "Cancelar en silencio",
+        "description": "Termina la petición sin respuesta y sin llamar al agente de conversación. Úsalo cuando la palabra de activación salta por error.\n\nUna frase por línea, sin signos de puntuación. [palabra] es opcional y (a|b) significa una u otra. Estas frases tienen prioridad sobre los comandos integrados, así que un \"para\" o \"stop\" a secas ya no pausa la música. Vacía el campo para volver a las frases predeterminadas.",
+        "data": {
+          "sentences": "Frases",
+          "response": "Respuesta hablada",
+          "also_reset": "Reiniciar también la conversación"
+        },
+        "data_description": {
+          "response": "Déjalo vacío para no decir nada.",
+          "also_reset": "Borra también el historial, para que la falsa activación no quede en el contexto del LLM."
+        }
+      }
+    },
+    "error": {
+      "invalid_sentence": "Frase no válida: {sentence}",
+      "no_language": "Selecciona al menos un idioma."
+    }
+  },
+  "selector": {
+    "languages": {
+      "options": {
+        "en": "Inglés",
+        "es": "Español"
+      }
+    },
+    "features": {
+      "options": {
+        "reset": "Reiniciar conversación (comando de voz)",
+        "cancel": "Cancelar en silencio (comando de voz)",
+        "satellite_buttons": "Botón de reiniciar conversación en cada satélite",
+        "reset_all_button": "Botón de reiniciar todas las conversaciones"
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "reset_all": {
+        "name": "Reiniciar todas las conversaciones"
+      },
+      "reset_satellite": {
+        "name": "Reiniciar conversación"
+      }
+    }
+  },
+  "services": {
+    "reset_conversation": {
+      "name": "Reiniciar conversación",
+      "description": "Borra el historial de las conversaciones de Assist para que la siguiente petición empiece una conversación nueva. Elige satélites para reiniciar su conversación, indica un ID de conversación o deja ambos vacíos para reiniciarlas todas.",
+      "fields": {
+        "conversation_id": {
+          "name": "ID de conversación",
+          "description": "Reinicia esta conversación, por ejemplo el trigger.user_input.conversation_id de una automatización con disparador de frase."
+        }
+      }
+    }
+  },
+  "issues": {
+    "incompatible_ha": {
+      "title": "Assist Utils no es totalmente compatible con esta versión de Home Assistant",
+      "description": "Assist Utils usa partes internas de Home Assistant que han cambiado en la versión {ha_version}:\n\n{missing}\n\nLas funciones afectadas se han desactivado (los botones de los satélites reinician todas las conversaciones). Actualiza Assist Utils o avisa en GitHub."
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# Default Spanish sentences.
+#
+# Syntax: [word] = optional, (a|b) = alternatives. Matching ignores case and
+# punctuation but NOT accents, so accented and unaccented spellings are both
+# listed: speech-to-text engines are inconsistent about accents.
+language: es
+commands:
+  reset:
+    response: "Conversación reiniciada."
+    sentences:
+      - "(olvida|borra|reinicia|resetea) [toda] la (conversación|conversacion)"
+      - "olvida [todo] lo que hemos hablado"
+      - "[empieza|empecemos] [una] nueva (conversación|conversacion)"
+      - "(empieza|empecemos|empezamos) de cero"
+  cancel:
+    response: ""
+    sentences:
+      - "para [ya]"
+      - "(cancela|cancelar|cancelalo|cancélalo) [ya]"
+      - "(dejalo|déjalo|olvidalo|olvídalo|olvida)"
+      - "[no es] nada"
+      - "no (era|te hablaba) a ti"
+      - "falsa alarma"
+      - "(silencio|callate|cállate)"
