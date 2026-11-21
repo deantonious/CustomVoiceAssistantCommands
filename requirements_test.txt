@@ -1,0 +1,5 @@
+pytest-homeassistant-custom-component
+# Requirements of the conversation component for the bundled Home Assistant version
+hassil==3.12.1
+home-assistant-intents==2026.10.6
+gazetteer-matcher==1.1.0

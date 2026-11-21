@@ -1,0 +1,7 @@
+reset_conversation:
+  fields:
+    conversation_id:
+      required: false
+      example: "01M7Z08GEKEE1ZS3R1WSTV7B77"
+      selector:
+        text:
